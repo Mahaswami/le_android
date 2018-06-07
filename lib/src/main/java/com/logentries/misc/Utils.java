@@ -145,7 +145,7 @@ public class Utils {
             try {
                 new JSONArray(message);
             } catch (JSONException ex1) {
-                System.out.prinln(ex1.printStackTrace());
+                System.out.prinln("exception occuredddddddd");
                 return false;
             }
         }
