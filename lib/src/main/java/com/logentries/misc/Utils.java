@@ -169,36 +169,36 @@ public class Utils {
 
         if (isUsingHttp) {
             // Add 'event' structure.
-            sb.append("{\"event\": {");
+            //sb.append("{\"event\": {");
         }
 
         if (logHostName) {
             sb.append(Utils.getFormattedHostName(isUsingHttp));
-            sb.append(isUsingHttp ? ", " : " ");
+            sb.append(" ");
         }
 
-        sb.append(Utils.getFormattedTraceID(isUsingHttp)).append(" ");
-        sb.append(isUsingHttp ? ", " : " ");
+        //sb.append(Utils.getFormattedTraceID(isUsingHttp)).append(" ");
+        //sb.append(isUsingHttp ? ", " : " ");
 
 
-        sb.append(Utils.getFormattedDeviceId(isUsingHttp)).append(" ");
-        sb.append(isUsingHttp ? ", " : " ");
+        //sb.append(Utils.getFormattedDeviceId(isUsingHttp)).append(" ");
+       // sb.append(isUsingHttp ? ", " : " ");
 
-        long timestamp = System.currentTimeMillis(); // Current time in UTC in milliseconds.
+        //long timestamp = System.currentTimeMillis(); // Current time in UTC in milliseconds.
         if (isUsingHttp) {
-            sb.append("\"Timestamp\": ").append(Long.toString(timestamp)).append(", ");
+           // sb.append("\"Timestamp\": ").append(Long.toString(timestamp)).append(", ");
         } else {
-            sb.append("Timestamp=").append(Long.toString(timestamp)).append(" ");
+            //sb.append("Timestamp=").append(Long.toString(timestamp)).append(" ");
         }
 
         // Append the event data
         if (isUsingHttp) {
             if (Utils.isJSONValid(message)) {
-                sb.append("\"Message\":").append(message);
-                sb.append("}}");
+                sb.append(message);
+                //sb.append("}}");
             } else {
-                sb.append("\"Message\": \"").append(message);
-                sb.append("\"}}");
+                sb.append(message);
+                //sb.append("\"}}");
             }
 
         } else {
