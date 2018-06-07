@@ -170,12 +170,12 @@ public class Utils {
 
         if (isUsingHttp) {
             // Add 'event' structure.
-            //sb.append("{\"event\": {");
+            sb.append("{\"event\": {");
         }
 
         if (logHostName) {
-            sb.append(Utils.getFormattedHostName(isUsingHttp));
-            sb.append(" ");
+            //sb.append(Utils.getFormattedHostName(isUsingHttp));
+            //sb.append(" ");
         }
 
         //sb.append(Utils.getFormattedTraceID(isUsingHttp)).append(" ");
@@ -195,11 +195,11 @@ public class Utils {
         // Append the event data
         if (isUsingHttp) {
             if (Utils.isJSONValid(message)) {
-                sb.append(message);
-                //sb.append("}}");
+               sb.append("\"Message\":").append(message);
+                sb.append("}}");
             } else {
                 sb.append(message);
-                //sb.append("\"}}");
+                sb.append("\"}}");
             }
 
         } else {
