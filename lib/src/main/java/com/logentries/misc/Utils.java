@@ -145,6 +145,7 @@ public class Utils {
             try {
                 new JSONArray(message);
             } catch (JSONException ex1) {
+                System.out.prinln(ex1.printStackTrace());
                 return false;
             }
         }
@@ -204,7 +205,8 @@ public class Utils {
         } else {
             sb.append(message);
         }
-
+        System.out.println("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        System.out.println(sb.toString());
         return sb.toString();
     }
 
