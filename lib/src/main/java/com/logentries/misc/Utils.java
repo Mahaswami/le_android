@@ -166,48 +166,47 @@ public class Utils {
      * @return
      */
     public static String formatMessage(String message, boolean logHostName, boolean isUsingHttp) {
-        StringBuilder sb = new StringBuilder();
+    StringBuilder sb = new StringBuilder();
 
-        if (isUsingHttp) {
-            // Add 'event' structure.
-            sb.append("{\"event\": {");
-        }
+           if (isUsingHttp) {
+               // Add 'event' structure.
+               sb.append("{\"event\": {");
+           }
 
-        if (logHostName) {
-            //sb.append(Utils.getFormattedHostName(isUsingHttp));
-            //sb.append(" ");
-        }
+           if (logHostName) {
+               sb.append(Utils.getFormattedHostName(isUsingHttp));
+               sb.append(isUsingHttp ? ", " : " ");
+           }
 
-        //sb.append(Utils.getFormattedTraceID(isUsingHttp)).append(" ");
-        //sb.append(isUsingHttp ? ", " : " ");
+           sb.append(Utils.getFormattedTraceID(isUsingHttp)).append(" ");
+           sb.append(isUsingHttp ? ", " : " ");
 
 
-        //sb.append(Utils.getFormattedDeviceId(isUsingHttp)).append(" ");
-       // sb.append(isUsingHttp ? ", " : " ");
+           sb.append(Utils.getFormattedDeviceId(isUsingHttp)).append(" ");
+           sb.append(isUsingHttp ? ", " : " ");
 
-        //long timestamp = System.currentTimeMillis(); // Current time in UTC in milliseconds.
-        if (isUsingHttp) {
-           // sb.append("\"Timestamp\": ").append(Long.toString(timestamp)).append(", ");
-        } else {
-            //sb.append("Timestamp=").append(Long.toString(timestamp)).append(" ");
-        }
+           long timestamp = System.currentTimeMillis(); // Current time in UTC in milliseconds.
+           if (isUsingHttp) {
+               sb.append("\"Timestamp\": ").append(Long.toString(timestamp)).append(", ");
+           } else {
+               sb.append("Timestamp=").append(Long.toString(timestamp)).append(" ");
+           }
 
-        // Append the event data
-        if (isUsingHttp) {
-            if (Utils.isJSONValid(message)) {
-               sb.append("\"Message\":").append(message);
-                sb.append("}}");
-            } else {
-                sb.append(message);
-                sb.append("\"}}");
-            }
+           // Append the event data
+           if (isUsingHttp) {
+               if (Utils.isJSONValid(message)) {
+                   sb.append("\"Message\":").append(message);
+                   sb.append("}}");
+               } else {
+                   sb.append("\"Message\": \"").append(message);
+                   sb.append("\"}}");
+               }
 
-        } else {
-            sb.append(message);
-        }
-        System.out.println("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        System.out.println(sb.toString());
-        return sb.toString();
+           } else {
+               sb.append(message);
+           }
+
+           return sb.toString();
     }
 
     public static boolean checkValidUUID(String uuid) {
