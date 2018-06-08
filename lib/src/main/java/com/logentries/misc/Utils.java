@@ -170,7 +170,7 @@ public class Utils {
 
            if (isUsingHttp) {
                // Add 'event' structure.
-               sb.append("{\"event\": {");
+               //sb.append("{\"event\": {");
            }
 
            if (logHostName) {
@@ -196,10 +196,10 @@ public class Utils {
            if (isUsingHttp) {
                if (Utils.isJSONValid(message)) {
                    sb.append(message);
-                   sb.append("}}");
+                   //sb.append("}}");
                } else {
                    sb.append(message);
-                   sb.append("\"}}");
+                  // sb.append("\"}}");
                }
 
            } else {
